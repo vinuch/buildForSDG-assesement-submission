@@ -38,16 +38,17 @@ const covid19ImpactEstimator = (data) => {
         return this.currentlyInfected * (2 ** getFactor(input.periodType, input.timeToElapse));
       },
       get severeCasesByRequestedTime() {
-        return Math.round(0.15 * this.infectionsByRequestedTime);
+        return Math.round(parseFloat(0.15 * this.infectionsByRequestedTime));
       },
       get hospitalBedsByRequestedTime() {
-        return Math.round((0.35 * input.totalHospitalBeds) - this.severeCasesByRequestedTime);
+        return Math.round(parseFloat((0.35 * input.totalHospitalBeds)
+         - this.severeCasesByRequestedTime));
       },
       get casesForICUByRequestedTime() {
-        return Math.round(0.5 * this.infectionsByRequestedTime);
+        return Math.round(parseFloat(0.5 * this.infectionsByRequestedTime));
       },
       get casesForVentilatorsByRequestedTime() {
-        return Math.round(0.2 * this.infectionsByRequestedTime);
+        return Math.round(parseFloat(0.2 * this.infectionsByRequestedTime));
       },
       get dollarsInFlight() {
         return this.infectionsByRequestedTime * input.region.avgDailyIncomePopulation
@@ -60,16 +61,17 @@ const covid19ImpactEstimator = (data) => {
         return this.currentlyInfected * (2 ** getFactor(input.periodType, input.timeToElapse));
       },
       get severeCasesByRequestedTime() {
-        return Math.round(0.15 * this.infectionsByRequestedTime);
+        return Math.round(parseFloat(0.15 * this.infectionsByRequestedTime));
       },
       get hospitalBedsByRequestedTime() {
-        return Math.round((0.35 * input.totalHospitalBeds) - this.severeCasesByRequestedTime);
+        return Math.round(parseFloat((0.35 * input.totalHospitalBeds)
+         - this.severeCasesByRequestedTime));
       },
       get casesForICUByRequestedTime() {
-        return Math.round(0.5 * this.infectionsByRequestedTime);
+        return Math.round(parseFloat(0.5 * this.infectionsByRequestedTime));
       },
       get casesForVentilatorsByRequestedTime() {
-        return Math.round(0.2 * this.infectionsByRequestedTime);
+        return Math.round(parseFloat(0.2 * this.infectionsByRequestedTime));
       },
       get dollarsInFlight() {
         return this.infectionsByRequestedTime * input.region.avgDailyIncomePopulation
