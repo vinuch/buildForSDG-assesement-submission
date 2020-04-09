@@ -19,7 +19,7 @@ const covid19ImpactEstimator = (data) => {
     impact: {
       currentlyInfected: input.reportedCases * 10,
       get infectionsByRequestedTime() {
-        return this.currentlyInfected * getFactor(input.periodType, input.timeToElapse);
+        return this.currentlyInfected * (2 ** getFactor(input.periodType, input.timeToElapse));
       },
       get severeCasesByRequestedTime() { return 0.15 * this.infectionsByRequestedTime; },
       hospitalBedsByRequestedTime: 0.35 * input.totalHospitalBeds,
@@ -32,7 +32,9 @@ const covid19ImpactEstimator = (data) => {
     },
     severeImpact: {
       currentlyInfected: input.reportedCases * 50,
-      get infectionsByRequestedTime() { return this.currentlyInfected * (2 ** 10); },
+      get infectionsByRequestedTime() {
+        return this.currentlyInfected * (2 ** getFactor(input.periodType, input.timeToElapse));
+      },
       get severeCasesByRequestedTime() { return 0.15 * this.infectionsByRequestedTime; },
       hospitalBedsByRequestedTime: 0.35 * input.totalHospitalBeds,
       get casesForICUByRequestedTime() { return 0.5 * this.infectionsByRequestedTime; },
