@@ -38,17 +38,17 @@ const covid19ImpactEstimator = (data) => {
         return this.currentlyInfected * (2 ** getFactor(input.periodType, input.timeToElapse));
       },
       get severeCasesByRequestedTime() {
-        return Math.floor(0.15 * this.infectionsByRequestedTime);
+        return Math.floor((15 * this.infectionsByRequestedTime) / 100);
       },
       get hospitalBedsByRequestedTime() {
-        return Math.floor((0.35 * input.totalHospitalBeds)
+        return Math.round((35 * input.totalHospitalBeds) / 100
          - this.severeCasesByRequestedTime);
       },
       get casesForICUByRequestedTime() {
-        return Math.floor(0.5 * this.infectionsByRequestedTime);
+        return Math.floor((5 * this.infectionsByRequestedTime) / 100);
       },
       get casesForVentilatorsByRequestedTime() {
-        return Math.floor(0.2 * this.infectionsByRequestedTime);
+        return Math.floor((2 * this.infectionsByRequestedTime) / 100);
       },
       get dollarsInFlight() {
         return Math.floor(this.infectionsByRequestedTime * input.region.avgDailyIncomePopulation
@@ -61,17 +61,17 @@ const covid19ImpactEstimator = (data) => {
         return this.currentlyInfected * (2 ** getFactor(input.periodType, input.timeToElapse));
       },
       get severeCasesByRequestedTime() {
-        return Math.floor(0.15 * this.infectionsByRequestedTime);
+        return Math.floor((15 * this.infectionsByRequestedTime) / 100);
       },
       get hospitalBedsByRequestedTime() {
-        return Math.floor((0.35 * input.totalHospitalBeds)
+        return Math.round(((35 * input.totalHospitalBeds) / 100)
          - this.severeCasesByRequestedTime);
       },
       get casesForICUByRequestedTime() {
-        return Math.floor(0.5 * this.infectionsByRequestedTime);
+        return Math.floor((5 * this.infectionsByRequestedTime) / 100);
       },
       get casesForVentilatorsByRequestedTime() {
-        return Math.floor(0.2 * this.infectionsByRequestedTime);
+        return Math.floor((2 * this.infectionsByRequestedTime) / 100);
       },
       get dollarsInFlight() {
         return Math.floor(this.infectionsByRequestedTime * input.region.avgDailyIncomePopulation
