@@ -1,18 +1,5 @@
-function convertToDays(periodType, time) {
-  let result;
-  if (periodType === 'weeks') {
-    result = time * 7;
-  } else if (periodType === 'months') {
-    result = time * 30;
-  } else if (periodType === 'days') {
-    result = time;
-  }
-  return result;
-}
-
 const covid19ImpactEstimator = (data) => {
   const input = data;
-  input.timeToElapse = convertToDays(input.periodType, input.timeToElapse);
   return {
     data: input,
     impact: {
