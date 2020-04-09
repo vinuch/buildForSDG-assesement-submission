@@ -12,8 +12,24 @@ function getFactor(periodType, time) {
 
   return factor;
 }
+
+function convertToDays(periodType, time) {
+  let numOfDays;
+  if (periodType === 'days') {
+    numOfDays = time;
+  } else if (periodType === 'weeks') {
+    numOfDays = time * 7;
+  } else if (periodType === 'months') {
+    numOfDays = time * 30;
+  } else {
+    return 'Invalid data type';
+  }
+
+  return numOfDays;
+}
 const covid19ImpactEstimator = (data) => {
   const input = data;
+  input.timeToElapse = convertToDays(input.periodType, input.timeToElapse);
   return {
     data: input,
     impact: {
