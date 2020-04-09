@@ -38,11 +38,11 @@ const covid19ImpactEstimator = (data) => {
         return this.currentlyInfected * (2 ** getFactor(input.periodType, input.timeToElapse));
       },
       get severeCasesByRequestedTime() {
-        return Math.round(parseFloat(0.15 * this.infectionsByRequestedTime));
+        return parseFloat(0.15 * this.infectionsByRequestedTime);
       },
       get hospitalBedsByRequestedTime() {
-        return Math.round(parseFloat((0.35 * input.totalHospitalBeds)
-         - this.severeCasesByRequestedTime));
+        return parseFloat((0.35 * input.totalHospitalBeds)
+         - this.severeCasesByRequestedTime);
       },
       get casesForICUByRequestedTime() {
         return Math.round(parseFloat(0.5 * this.infectionsByRequestedTime));
@@ -51,8 +51,8 @@ const covid19ImpactEstimator = (data) => {
         return Math.round(parseFloat(0.2 * this.infectionsByRequestedTime));
       },
       get dollarsInFlight() {
-        return this.infectionsByRequestedTime * input.region.avgDailyIncomePopulation
-        * input.region.avgDailyIncomeInUSD * input.timeToElapse;
+        return Math.round(this.infectionsByRequestedTime * input.region.avgDailyIncomePopulation
+        * input.region.avgDailyIncomeInUSD * input.timeToElapse);
       }
     },
     severeImpact: {
@@ -61,11 +61,11 @@ const covid19ImpactEstimator = (data) => {
         return this.currentlyInfected * (2 ** getFactor(input.periodType, input.timeToElapse));
       },
       get severeCasesByRequestedTime() {
-        return Math.round(parseFloat(0.15 * this.infectionsByRequestedTime));
+        return parseFloat(0.15 * this.infectionsByRequestedTime);
       },
       get hospitalBedsByRequestedTime() {
-        return Math.round(parseFloat((0.35 * input.totalHospitalBeds)
-         - this.severeCasesByRequestedTime));
+        return parseFloat((0.35 * input.totalHospitalBeds)
+         - this.severeCasesByRequestedTime);
       },
       get casesForICUByRequestedTime() {
         return Math.round(parseFloat(0.5 * this.infectionsByRequestedTime));
@@ -74,8 +74,8 @@ const covid19ImpactEstimator = (data) => {
         return Math.round(parseFloat(0.2 * this.infectionsByRequestedTime));
       },
       get dollarsInFlight() {
-        return this.infectionsByRequestedTime * input.region.avgDailyIncomePopulation
-        * input.region.avgDailyIncomeInUSD * input.timeToElapse;
+        return Math.round(this.infectionsByRequestedTime * input.region.avgDailyIncomePopulation
+        * input.region.avgDailyIncomeInUSD * input.timeToElapse);
       }
     }
   };
