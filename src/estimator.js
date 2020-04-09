@@ -38,10 +38,10 @@ const covid19ImpactEstimator = (data) => {
         return this.currentlyInfected * (2 ** getFactor(input.periodType, input.timeToElapse));
       },
       get severeCasesByRequestedTime() {
-        return Math.round(parseFloat(0.15 * this.infectionsByRequestedTime));
+        return Math.ceil(parseFloat(0.15 * this.infectionsByRequestedTime));
       },
       get hospitalBedsByRequestedTime() {
-        return Math.round(parseFloat((0.35 * input.totalHospitalBeds)
+        return Math.ceil(parseFloat((0.35 * input.totalHospitalBeds)
          - this.severeCasesByRequestedTime));
       },
       get casesForICUByRequestedTime() {
@@ -61,10 +61,10 @@ const covid19ImpactEstimator = (data) => {
         return this.currentlyInfected * (2 ** getFactor(input.periodType, input.timeToElapse));
       },
       get severeCasesByRequestedTime() {
-        return Math.round(parseFloat(0.15 * this.infectionsByRequestedTime));
+        return Math.ceil(parseFloat(0.15 * this.infectionsByRequestedTime));
       },
       get hospitalBedsByRequestedTime() {
-        return Math.round(parseFloat((0.35 * input.totalHospitalBeds)
+        return Math.ceil(parseFloat((0.35 * input.totalHospitalBeds)
          - this.severeCasesByRequestedTime));
       },
       get casesForICUByRequestedTime() {
