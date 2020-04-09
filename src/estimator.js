@@ -3,26 +3,28 @@ const covid19ImpactEstimator = (data) => {
   return {
     data: input,
     impact: {
-      currentlyInfected: this.data.reportedCases * 10,
-      infectionsByRequestedTime: this.impact.currentlyInfected * (2 ** 10),
-      severeCasesByRequestedTime: 0.15 * this.impact.infectionsByRequestedTime,
-      hospitalBedsByRequestedTime: 0.35 * this.data.totalHospitalBeds,
-      casesForICUByRequestedTime: 0.5 * this.impact.infectionsByRequestedTime,
-      casesForVentilatorsByRequestedTime: 0.2 * this.severeImpact.infectionsByRequestedTime,
-      dollarsInFlight:
-        this.impact.infectionsByRequestedTime * this.data.region.avgDailyIncomePopulation
-        * this.data.region.avgDailyIncomeInUSD * this.data.timeToElapse
+      currentlyInfected: input.reportedCases * 10,
+      get infectionsByRequestedTime() { return this.currentlyInfected * (2 ** 10); },
+      get severeCasesByRequestedTime() { return 0.15 * this.infectionsByRequestedTime; },
+      hospitalBedsByRequestedTime: 0.35 * input.totalHospitalBeds,
+      get casesForICUByRequestedTime() { return 0.5 * this.infectionsByRequestedTime; },
+      get casesForVentilatorsByRequestedTime() { return 0.2 * this.infectionsByRequestedTime; },
+      get dollarsInFlight() {
+        return this.infectionsByRequestedTime * input.region.avgDailyIncomePopulation
+        * input.region.avgDailyIncomeInUSD * input.timeToElapse;
+      }
     },
     severeImpact: {
-      currentlyInfected: this.data.reportedCases * 50,
-      infectionsByRequestedTime: this.impact.currentlyInfected * (2 ** 10),
-      severeCasesByRequestedTime: 0.15 * this.severeImpact.infectionsByRequestedTime,
-      hospitalBedsByRequestedTime: 0.35 * this.data.totalHospitalBeds,
-      casesForICUByRequestedTime: 0.5 * this.severeImpact.infectionsByRequestedTime,
-      casesForVentilatorsByRequestedTime: 0.2 * this.severeImpact.infectionsByRequestedTime,
-      dollarsInFlight:
-        this.severeImpact.infectionsByRequestedTime * this.data.region.avgDailyIncomePopulation
-        * this.data.region.avgDailyIncomeInUSD * this.data.timeToElapse
+      currentlyInfected: input.reportedCases * 50,
+      get infectionsByRequestedTime() { return this.currentlyInfected * (2 ** 10); },
+      get severeCasesByRequestedTime() { return 0.15 * this.infectionsByRequestedTime; },
+      hospitalBedsByRequestedTime: 0.35 * input.totalHospitalBeds,
+      get casesForICUByRequestedTime() { return 0.5 * this.infectionsByRequestedTime; },
+      get casesForVentilatorsByRequestedTime() { return 0.2 * this.infectionsByRequestedTime; },
+      get dollarsInFlight() {
+        return this.infectionsByRequestedTime * input.region.avgDailyIncomePopulation
+        * input.region.avgDailyIncomeInUSD * input.timeToElapse;
+      }
     }
   };
 };
