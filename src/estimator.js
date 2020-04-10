@@ -81,20 +81,4 @@ const covid19ImpactEstimator = (data) => {
   };
 };
 
-const data = {
-  region: {
-    name: 'Africa',
-    avgAge: 19.7,
-    avgDailyIncomeInUSD: 4,
-    avgDailyIncomePopulation: 0.73
-  },
-  periodType: 'days',
-  timeToElapse: 38,
-  reportedCases: 2747,
-  population: 92931687,
-  totalHospitalBeds: 678874
-};
-
-console.log(Object.values(covid19ImpactEstimator(data).severeImpact));
-
-// export default covid19ImpactEstimator;
+export default covid19ImpactEstimator;
