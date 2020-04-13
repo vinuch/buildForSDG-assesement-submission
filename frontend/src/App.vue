@@ -124,7 +124,7 @@ export default {
   methods: {
     estimate() {
       this.result = covid19ImpactEstimator(this.input);
-      console.log(Object.values(this.result));
+      // console.log(Object.values(this.result));
     },
     convertToDays(periodType, time) {
       let numOfDays;
